@@ -7,12 +7,13 @@ const loadNews = () => {
 const displayNews = (allNews) => {
   console.log(allNews);
   const newsContainer = document.getElementById("news-container");
+  newsContainer.innerHTML = ``;
   for (const news of allNews) {
     const newsDiv = document.createElement("div");
     newsDiv.classList.add("news");
     newsDiv.innerHTML = `
     <div class="card my-3">
-  <div class="row g-0">
+    <div class="row g-0">
     <div class="col-md-4">
       <img class="h-100" src="${
         news.thumbnail_url
@@ -35,7 +36,6 @@ const displayNews = (allNews) => {
        <span></span>
        </div>
        </div>
-       
       </div>
     </div>
   </div>
