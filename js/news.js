@@ -34,10 +34,10 @@ const displayNews = (allNews) => {
          <div class="d-lg-flex flex-lg-row">
          <span><i class="fa-regular fa-eye p-2"></i></span>
          <h4>${news.total_view}</h4>
-        <button type="button" href="#" class="btn btn-info" onclick="loadModal()"  data-bs-toggle="modal"
-        data-bs-target="#exampleModal"" > <i class="fa-solid fa-arrow-right"></i></button>
-        Launch demo modal
-      </button>
+        <button type="button" href="#" class="btn btn-info" onclick="loadModal('${
+          news._id
+        }')"  data-bs-toggle="modal"
+        data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right"></i></button>
         </div>
        </div>
       </div>
