@@ -1,8 +1,8 @@
-const loadNews = (id) => {
+const loadNews = async (id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayNews(data.data));
+  const res = await fetch(url);
+  const data = await res.json();
+  displayNews(data.data);
 };
 
 const displayNews = (allNews) => {
@@ -25,7 +25,7 @@ const displayNews = (allNews) => {
     <div class="col-md-8">
       <div class="card-body ">
         <h5 class="card-title">${news.title}</h5>
-        <p class="card-text">${news.details.slice(0, 300)}</p>
+        <p class="card-text">${news.details.slice(0, 300)}...</p>
         <div class="mx-4 ps-3 mb-4 d-lg-flex flex-lg-row">
         <div class="d-lg-flex">
          <img class="w-25 author rounded-circle" style="width: 40px height: 40px border-radius: 25px" src="${
@@ -48,8 +48,18 @@ const displayNews = (allNews) => {
 </div>
     `;
     newsContainer.appendChild(newsDiv);
-    // const totalNews = document.getElementById("total-news");
-    // totalNews.innerText = allNews.length;
   }
+  toggleSpinner(false);
 };
 // loadNews();
+
+//spinner
+const toggleSpinner = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isLoading) {
+    loaderSection.classList.remove("d-none");
+    console.log("spinner done");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};

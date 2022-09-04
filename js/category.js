@@ -20,5 +20,6 @@ const displayCategories = (categories) => {
     categoriesContainer.appendChild(categoryDiv);
     cnt++;
   });
+  // toggleSpinner(true);
 };
 loadCategories();

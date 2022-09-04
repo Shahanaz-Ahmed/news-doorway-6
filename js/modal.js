@@ -1,8 +1,8 @@
-const loadModal = (id) => {
+const loadModal = async (id) => {
   const url = ` https://openapi.programming-hero.com/api/news/${id}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayModalDetails(data.data));
+  const res = await fetch(url);
+  const data = await res.json();
+  displayModalDetails(data.data);
 };
 
 const displayModalDetails = (modals) => {
