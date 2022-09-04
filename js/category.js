@@ -6,6 +6,7 @@ const loadCategories = () => {
 
 const displayCategories = (categories) => {
   //console.log(categories);
+
   const categoriesContainer = document.getElementById("category-container");
   let text1 = "0";
   let cnt = 1;

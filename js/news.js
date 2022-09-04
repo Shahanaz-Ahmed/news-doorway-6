@@ -6,6 +6,8 @@ const loadNews = (id) => {
 };
 
 const displayNews = (allNews) => {
+  const totalNews = document.getElementById("total-news");
+  totalNews.innerText = allNews.length;
   console.log(allNews);
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = ``;
@@ -46,8 +48,8 @@ const displayNews = (allNews) => {
 </div>
     `;
     newsContainer.appendChild(newsDiv);
-    const totalNews = document.getElementById("total-news");
-    totalNews.innerText = allNews.length;
+    // const totalNews = document.getElementById("total-news");
+    // totalNews.innerText = allNews.length;
   }
 };
 // loadNews();
