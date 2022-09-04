@@ -17,9 +17,10 @@ const displayCategories = (categories) => {
     categoryDiv.classList.add("category");
     categoryDiv.innerHTML = `
        <a onclick="loadNews('${result}')" class="px-3 text-secondary text-decoration-none fs-4">${category.category_name}</a>`;
+    //spinner start
+    toggleSpinner(true);
     categoriesContainer.appendChild(categoryDiv);
     cnt++;
   });
-  // toggleSpinner(true);
 };
 loadCategories();
