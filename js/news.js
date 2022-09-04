@@ -1,5 +1,6 @@
-const loadNews = () => {
-  fetch("https://openapi.programming-hero.com/api/news/category/01")
+const loadNews = (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
+  fetch(url)
     .then((res) => res.json())
     .then((data) => displayNews(data.data));
 };
@@ -12,7 +13,7 @@ const displayNews = (allNews) => {
     const newsDiv = document.createElement("div");
     newsDiv.classList.add("news");
     newsDiv.innerHTML = `
-    <div class="card my-3">
+    <div id="card" class="card my-3"">
     <div class="row g-0">
     <div class="col-md-4">
       <img class="h-100" src="${
@@ -22,7 +23,7 @@ const displayNews = (allNews) => {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${news.title}</h5>
-        <p class="card-text">${news.details.slice(1, 300)}</p>
+        <p class="card-text">${news.details.slice(0, 300)}</p>
         <div class="mx-4 ps-3 mb-4 d-lg-flex flex-lg-row">
         <div class="d-lg-flex">
          <img class="w-25 author rounded-circle" style="width: 40px height: 40px border-radius: 25px" src="${
@@ -32,9 +33,12 @@ const displayNews = (allNews) => {
          </div>
          <div class="d-lg-flex flex-lg-row">
          <span><i class="fa-regular fa-eye p-2"></i></span>
-       <h4>${news.total_view}</h4>
-       <span></span>
-       </div>
+         <h4>${news.total_view}</h4>
+        <button type="button" href="#" class="btn btn-info" onclick="loadModal()"  data-bs-toggle="modal"
+        data-bs-target="#exampleModal"" > <i class="fa-solid fa-arrow-right"></i></button>
+        Launch demo modal
+      </button>
+        </div>
        </div>
       </div>
     </div>
@@ -42,6 +46,8 @@ const displayNews = (allNews) => {
 </div>
     `;
     newsContainer.appendChild(newsDiv);
+    // const totalNews = document.getElementById("total-news");
+    // totalNews.innerText = news.length;
   }
 };
 // loadNews();
